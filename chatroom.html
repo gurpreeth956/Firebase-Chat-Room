@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Firebase Chat Room</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        
+        <div class="chat">
+            <form id="nameForm">
+                <input type="text" id="name-input" placeholder="Enter your name">
+                <button type="button" id="name-btn" onclick="enterName()">Enter</button>
+            </form>
+            <div class="chat-header">Firebase Chat Room!</div>
+            <div class="chat-window" id="chat-window">
+                <ul id="messages">
+                    
+                </ul>
+                <form id="messageForm">
+                    <input type="text" id="msg-input" placeholder="Enter message..." disabled>
+                    <button type="button" id="msg-btn" onclick="enterMessage()" disabled>Send</button>
+                </form>
+            </div>
+        </div>
+        
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#config-web-app -->
+		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+            apiKey: "AIzaSyDUhNDuCsv_Oby8lJu0taGYb44kzg8Cd5Q",
+            authDomain: "fir-chat-room-3a664.firebaseapp.com",
+            databaseURL: "https://fir-chat-room-3a664.firebaseio.com",
+            projectId: "fir-chat-room-3a664",
+            storageBucket: "",
+            messagingSenderId: "745698906771",
+            appId: "1:745698906771:web:3662aab23999fa89"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+        </script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
+        <script src="functions.js"></script>
+        
+    
+    </body>
+</html>
