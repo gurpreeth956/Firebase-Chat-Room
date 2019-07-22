@@ -113,6 +113,14 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
     -ms-transform: scale(0.95);
     transform: scale(0.95);
 }
+
+input[type=button]:disabled, input[type=submit]:disabled, input[type=reset]:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  outline: none;
+  box-shadow: none;
+}
   
 input[type=text] {
     background-color: #f6f6f6;
