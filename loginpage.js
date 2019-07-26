@@ -1,9 +1,14 @@
 // JS file for loginpage.html page
 
 
+/* NOTES
+    -NEED TO CHECK USING TWO COMPUTERS
+        -MIGHT HAVE TO REDIRECT IF USER LOGGED IN
+*/
+
 // Database Variables
 var db = firebase.database();
-var namesRef = db.ref("/names");
+var usersRef = db.ref('/users');
 
 
 // Enabling login button
@@ -34,68 +39,84 @@ $(document).ready(function() {
 
 // Login button function
 $('#loginBtn').click(function() {
-	var email = $("#email").val();
-    var password = $("#password").val();
+	var email = $('#email').val();
+    var password = $('#password').val();
         
-    if (email != "" && password != "") {
+    if (email != '' && password != '') {
         firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-            location.replace("chatroom.html");
-            return;
+            location.replace('chatroom.html');
         }).catch(function(error) {
             // An error happened
             return alert(error.message);
         });
     } else {
-    	return alert("Enter something");
+        if (email == '') {
+            return alert('Please enter an email');
+        } else if (password == '') {
+            return alert('Please enter a password');
+        } else {
+            return alert('There was an unknown error...');
+        }
     }
 });
 
 
 // Signup button function
 $('#signupBtn').click(function() {
-	var email = $("#email").val();
-    var password = $("#password").val();
-    var name = $("#name").val();
+    debugger;
+	var email = $('#email').val();
+    var password = $('#password').val();
+    var name = $('#name').val();
         
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
-        location.replace("chatroom.html");
+        location.replace('chatroom.html');
+
+        // Now add user name to database
+        var user = firebase.auth().currentUser;
+        // Getting uid if user loaded
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                var uid = user.uid;
+
+                var userData = {
+                    id: uid,
+                    name: name,
+                    email: email
+                }
+                
+                usersRef.push(userData);
+            } else {
+                // No user is signed in.
+            }
+        });
     }).catch(function(error) {
         // An error happened
-        return alert(error.message);
-    });
-
-    // Now add user name to database
-    var user = firebase.auth().currentUser;
-    var uid;
-    // Getting uid if user loaded
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            uid = user.uid;
-
-            var userData = {
-                id: uid,
-                name: name,
-                email: email
-            }
-            
-            namesRef.push(userData);
+        if (email == '') {
+            return alert('Please enter an email');
+        } else if (password == '') {
+            return alert('Please enter a password');
+        } else if (name == '') {
+            return alert('Please enter a name');
         } else {
-            // No user is signed in.
+            return alert(error.message);
         }
     });
 });
 
 
 // Change password button function
-$("#passwordValBtn").click(function() {
-    var email = $("#emailChange").val();
+$('#passwordValBtn').click(function() {
+    var email = $('#emailChange').val();
 
     firebase.auth().sendPasswordResetEmail(email).then(function() {
         $('#forgotpasswordmodal').modal('hide');
-        return alert("Password Reset Sent!");
+        return alert('Password Reset Sent!');
     }).catch(function(error) {
-        // An error happened.
-        return alert(error.message);
+        // An error happened
+        if (email == '') {
+            return alert('Please enter an email');
+        } else {
+            return alert(error.message);
+        }
     });
 });
-
