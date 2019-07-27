@@ -12,7 +12,6 @@ var db = firebase.database();
 var msgRef = db.ref('/msgs');
 var userRef = db.ref('/users');
 var user = firebase.auth().currentUser;
-//var uid = uuid();
 var uid;
 
 
@@ -22,7 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         uid = user.uid;
     } else {
         // No user is signed in.
-        return alert('Something went wrong...');
+        location.replace('loginpage.html');
     }
 });
 
@@ -67,4 +66,10 @@ msgRef.on('child_added', function(data) {
 	}
     
     messageScreen.innerHTML += msg;
+});
+
+
+// Going to profile page function
+$('#profileBtn').click(function() {
+    location.replace('profile.html');
 });

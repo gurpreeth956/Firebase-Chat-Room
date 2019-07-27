@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
 
-        <title>Firebase Chat Room</title>
+        <title>Firebase Chat Room - Chatroom</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,13 +28,8 @@
             <div class="inbox_msg">
                 <div class="inbox_people">
                 <div class="headind_srch">
-                    <div class="recent_heading">
-                    <h4>Recent</h4>
-                    </div>
-                    <div class="srch_bar">
-                    <div class="stylish-input-group">
-                        <input type="text" class="search-bar"  placeholder="Search" >
-                        </div>
+                    <div class="profile_heading">
+                        <input type="button" class="fadeIn fourth" value="Profile" id="profileBtn">
                     </div>
                 </div>
                 <div class="inbox_chat scroll">
@@ -70,32 +65,32 @@
         </div>
         
         
+        <!-- FIREBASE CONNECTION -->
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
              https://firebase.google.com/docs/web/setup#config-web-app -->
-		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
 
         <script>
-          // Your web app's Firebase configuration
-          var firebaseConfig = {
-            apiKey: "AIzaSyDUhNDuCsv_Oby8lJu0taGYb44kzg8Cd5Q",
-            authDomain: "fir-chat-room-3a664.firebaseapp.com",
-            databaseURL: "https://fir-chat-room-3a664.firebaseio.com",
-            projectId: "fir-chat-room-3a664",
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+            apiKey: "AIzaSyCEBRpOzlTlRduyWlgzicls2b1yupmZ-EE",
+            authDomain: "chat-room-project-18790.firebaseapp.com",
+            databaseURL: "https://chat-room-project-18790.firebaseio.com",
+            projectId: "chat-room-project-18790",
             storageBucket: "",
-            messagingSenderId: "745698906771",
-            appId: "1:745698906771:web:3662aab23999fa89"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
+            messagingSenderId: "335665999799",
+            appId: "1:335665999799:web:9ac4dfc720285474"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
         </script>
         
 
         <!-- Additional Scripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
         <script src="chatroom.js"></script>
     
     </body>

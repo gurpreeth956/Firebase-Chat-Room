@@ -2,13 +2,27 @@
 
 
 /* NOTES
-    -NEED TO CHECK USING TWO COMPUTERS
-        -MIGHT HAVE TO REDIRECT IF USER LOGGED IN
+    
+    -STORE USER IMAGES IN STORAGE
+    -MAKE MULTIPLE CHATS POSSIBLE
 */
+
 
 // Database Variables
 var db = firebase.database();
 var usersRef = db.ref('/users');
+var user = firebase.auth().currentUser;
+
+
+// Redirecting to chatroom page if logged in
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      location.replace('chatroom.html');
+    } else {
+      // No user is signed in.
+    }
+});
 
 
 // Enabling login button
@@ -63,16 +77,14 @@ $('#loginBtn').click(function() {
 
 // Signup button function
 $('#signupBtn').click(function() {
-    debugger;
 	var email = $('#email').val();
     var password = $('#password').val();
     var name = $('#name').val();
         
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
-        location.replace('chatroom.html');
-
         // Now add user name to database
-        var user = firebase.auth().currentUser;
+        user = firebase.auth().currentUser;
+        
         // Getting uid if user loaded
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
@@ -89,6 +101,9 @@ $('#signupBtn').click(function() {
                 // No user is signed in.
             }
         });
+        
+        // Now go to chatroom page
+        location.replace('chatroom.html');
     }).catch(function(error) {
         // An error happened
         if (email == '') {

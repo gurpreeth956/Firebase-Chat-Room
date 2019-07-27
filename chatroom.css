@@ -20,9 +20,8 @@
 	margin: 20px 0 0;
 }
 
-.recent_heading {
-	float: left;
-	width: 40%;
+.profile_heading {
+	text-align: center;
 }
 
 .srch_bar {
@@ -37,7 +36,7 @@
 	border-bottom: 1px solid #c4c4c4;
 }
 
-.recent_heading h4 {
+.profile_heading h4 {
 	color: #0465ac;
     font-size: 16px;
     margin: auto;
@@ -221,4 +220,48 @@
 .msg_history {
 	height: 516px;
 	overflow-y: auto;
+}
+
+#profileBtn  {
+    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 10px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    width: 85%;
+}
+  
+#profileBtn:hover  {
+    background-color: #39ace7;
+}
+  
+#profileBtn:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+#profileBtn:disabled {
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
+	outline: none;
+	border: none;
+	box-shadow: none;
 }
