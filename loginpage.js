@@ -3,7 +3,7 @@
 
 /* NOTES
     
-    -STORE USER IMAGES IN STORAGE
+    -USER IMAGES IN CHAT
     -MAKE MULTIPLE CHATS POSSIBLE
 */
 
@@ -12,6 +12,8 @@
 var db = firebase.database();
 var usersRef = db.ref('/users');
 var user = firebase.auth().currentUser;
+var storage = firebase.storage();
+var imageRef = storage.ref('/images');
 
 
 // Redirecting to chatroom page if logged in
