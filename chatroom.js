@@ -12,7 +12,11 @@ var db = firebase.database();
 var msgRef = db.ref('/msgs');
 var userRef = db.ref('/users');
 var user = firebase.auth().currentUser;
-var uid;
+var storage = firebase.storage();
+var imageRef = storage.ref('/images');
+var uid, messageCount = 0;
+var allMessages = [];
+var pageStarted = true;
 
 
 // Getting uid if user loaded
@@ -23,6 +27,22 @@ firebase.auth().onAuthStateChanged(function(user) {
         // No user is signed in.
         location.replace('loginpage.html');
     }
+});
+
+$(document).ready(function() {
+    setTimeout(function() {
+        // Code to be executed after 2 second
+        allMessages.forEach(function(item) {
+            messageScreen.innerHTML += item;
+        });
+        pageStarted = false;
+    }, 2000);
+});
+
+
+// Going to profile page function
+$('#profileBtn').click(function() {
+    location.replace('profile.html');
 });
 
 
@@ -45,7 +65,8 @@ $('#msgBtn').click(function() {
                 var msg = {
                     id: uid,
                     name: name,
-                    text: text
+                    text: text,
+                    count: messageCount,
                 }
                 
                 msgRef.push(msg);
@@ -58,18 +79,38 @@ $('#msgBtn').click(function() {
 
 // Updating messages after one is sent
 msgRef.on('child_added', function(data) {
-    var {id : userID, name, text} = data.val();
+    var {id : userID, name, text, count} = data.val();
     
-    var msg = '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>' + name + ':</b>' + text + '</p></div></div>';
+    // Getting user profile pic
+    var imageRef = storage.ref('/images/' + userID);
+    var imageFileLink = "", msg = "";
+
+    imageRef.getDownloadURL().then(function(url) {
+        imageFileLink = url;
+        addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count);
+    }).catch(function(error) {
+        imageRef = storage.ref('/images/no_user.png');
+        imageRef.getDownloadURL().then(function(url) {
+            imageFileLink = url;
+            addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count);
+        });
+    });
+
+    messageCount++;
+});
+
+
+// Method for adding messages
+function addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count) {
+    var msg = '<div class="chat_img"> <img src="' + imageFileLink + '" alt=""> </div>' +
+              '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>' + name + ':</b>' + text + '</p></div></div>';
     if (uid == userID) {
-        msg = '<div class="outgoing_msg"><div class="sent_msg"><p>' + text + '</p></div></div>';
-	}
-    
-    messageScreen.innerHTML += msg;
-});
+        msg = '<div class="chat_img"> <img src="" alt=""> </div>' +
+              '<div class="outgoing_msg"><div class="sent_msg"><p>' + text + '</p></div></div>';
+    }
 
-
-// Going to profile page function
-$('#profileBtn').click(function() {
-    location.replace('profile.html');
-});
+    if (!pageStarted) {
+        messageScreen.innerHTML += msg;
+    }
+    allMessages[count] = msg;
+}

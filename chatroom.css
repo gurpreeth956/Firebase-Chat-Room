@@ -1,9 +1,15 @@
 /*---------chat window---------------*/
 .container{
-    max-width:900px;
+	max-width: 1170px;
+	margin: auto;
 }
+
+img {
+	max-width:100%;
+}
+
 .inbox_people {
-	background: #fff;
+	background: #f8f8f8 none repeat scroll 0 0;
 	float: left;
 	overflow: hidden;
 	width: 30%;
@@ -85,9 +91,15 @@
     text-overflow: ellipsis;
 }
 
+.chat_ib {
+	float: left;
+	padding: 0 0 0 15px;
+	width: 88%;
+  }
+
 .chat_img {
 	float: left;
-	width: 11%;
+	width: 50px;
 }
 
 .chat_img img {
@@ -131,7 +143,7 @@
 
 .received_msg {
 	display: inline-block;
-	padding: 0px 0px 5px 5px;
+	padding: 0px 0px 5px 10px;
 	vertical-align: top;
 	width: 92%;
 }
