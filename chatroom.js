@@ -102,7 +102,7 @@ msgRef.on('child_added', function(data) {
 
 // Method for adding messages
 function addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count) {
-    var msg = '<div class="chat_img"> <img src="' + imageFileLink + '" alt=""> </div>' +
+    var msg = '<div class="chat_img"> <img src="' + imageFileLink + '" alt="" style="width:50px; height:30px;"> </div>' +
               '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>' + name + ':</b>' + text + '</p></div></div>';
     if (uid == userID) {
         msg = '<div class="chat_img"> <img src="" alt=""> </div>' +

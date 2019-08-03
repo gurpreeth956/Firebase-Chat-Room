@@ -1,8 +1,13 @@
 // JS file for profile.html page
 
 
+// HTML Variable
+var messageName = document.getElementById('username');
+
+
 // Database Variables
 var db = firebase.database();
+var userRef = db.ref('/users');
 var user = firebase.auth().currentUser;
 var storage = firebase.storage();
 var imageRef = storage.ref('/images');
@@ -32,6 +37,16 @@ firebase.auth().onAuthStateChanged(function(user) {
             document.querySelector('img').src = url;
         });
         location.replace('loginpage.html');
+    }
+});
+
+
+// Updating name value on profile page
+userRef.on('child_added', function(data) {
+    var {id : userID, name : username, email} = data.val();
+    
+    if (userID == uid) {
+        messageName.innerHTML = username;
     }
 });
 
