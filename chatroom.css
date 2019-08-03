@@ -70,6 +70,10 @@ img {
 	margin: 0 0 0 -27px;
 }
 
+.chat_ib {
+	word-wrap: break-word;
+}
+
 .chat_ib h5 {
 	font-size: 15px;
 	color: #464646;
@@ -77,8 +81,8 @@ img {
 }
 
 .chat_ib h5 span {
-	font-size: 13px;
-	float: right;
+	font-size: 30px;
+	text-align: right;
 }
 
 .chat_ib p {
@@ -86,9 +90,9 @@ img {
     color: #989898;
     margin: auto;
     display: inline-block;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	overflow-wrap: break-word;
 }
 
 .chat_ib {
@@ -213,10 +217,9 @@ img {
 
 .msg_send_btn {
 	background: #56baed none repeat scroll 0 0;
-	border:none;
+	border: none;
     border-radius: 20px;
 	color: #fff;
-	cursor: pointer;
 	font-size: 15px;
 	height: 33px;
 	position: absolute;
@@ -224,6 +227,27 @@ img {
 	top: 11px;
 	width: 85px;
     outline: none;
+}
+
+.msg_send_btn:hover  {
+    background-color: #39ace7;
+}
+  
+.msg_send_btn:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+.msg_send_btn:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 .messaging {

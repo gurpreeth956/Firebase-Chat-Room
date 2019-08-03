@@ -29,13 +29,30 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
+
+// Enabling send button
+$(document).ready(function() {
+    $('#msgBtn').attr('disabled', 'disabled');
+    $('input[type="text"]').keyup(function() {
+        if($('#msgInput').val() != '') {
+            $('#msgBtn').removeAttr('disabled');
+        } else {
+            $('#msgBtn').attr('disabled', 'disabled');
+        }
+    });
+});
+
+
+// For loading messages after images
 $(document).ready(function() {
     setTimeout(function() {
         // Code to be executed after 2 second
         allMessages.forEach(function(item) {
             messageScreen.innerHTML += item;
         });
+
         pageStarted = false;
+        $('#msgInput').removeAttr('disabled');
     }, 2000);
 });
 

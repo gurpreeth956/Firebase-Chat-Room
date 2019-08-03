@@ -33,17 +33,43 @@
                 </div>
 
                 <div class="profile-userpic">
-                    <img src="" id="profilePic" height="200" alt="">
+                    <img src="" id="profilePic" alt="">
                     <input type="file" id="changepicBtn" onchange="previewFile()"><br>
                 </div>
             
-                <!-- Login Form -->
+                <!-- Options Form -->
                 <form>
                     <h3 id=username></h3>
+                    <input type="button" class="fadeIn fourth" value="Options" id="optionsBtn" data-toggle="modal" data-target="#changeoptions">
                     <input type="button" class="fadeIn fourth" value="Chat Room" id="chatroomBtn">
                     <input type="button" class="fadeIn fourth" value="Log Out" id="logoutBtn">
                 </form>
 
+            </div>
+        </div>
+
+
+        <!-- Modal for changing username/password -->
+        <div class="modal fade" id="changeoptions" tabindex="-1" role="dialog" aria-labelledby="forgotpassword" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Change Name or Password</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <h3 id=newnametext>New Name:</h3>
+                    <input type="text" id="nameChange" name="newname" placeholder="name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'email'">
+                    <h3 id=newpasstext>New Password:</h3>
+                    <input type="button" value="Change Password" id="changePassBtn">
+                </div>
+                <div class="modal-footer modal-footer-btns">
+                    <input type="button" data-dismiss="modal" value="Close">
+                    <input type="button" id="nameChangeBtn" value="Change">
+                </div>
+            </div>
             </div>
         </div>
 
