@@ -20,11 +20,14 @@ var user = firebase.auth().currentUser;
 var storage = firebase.storage();
 var imageRef = storage.ref('/images');
 var uid, messageCount = 0;
+
+
+// Other Variables
 var allMessages = [];
 var pageStarted = true;
 
 
-// Getting uid if user loaded
+// Getting user uid if user loaded
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         uid = user.uid;

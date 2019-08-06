@@ -18,6 +18,10 @@ var storage = firebase.storage();
 var imageRef = storage.ref('/images');
 
 
+// Other Variables
+// None
+
+
 // Redirecting to chatroom page if logged in
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
