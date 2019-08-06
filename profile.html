@@ -18,7 +18,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
         <!-- Other Files -->
-        <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="pagestyle.css">
           
     </head>
     <body>
@@ -61,13 +61,10 @@
                 </div>
                 <div class="modal-body">
                     <h3 id=newnametext>New Name:</h3>
-                    <input type="text" id="nameChange" name="newname" placeholder="name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'email'">
+                    <input type="text" id="nameChange" name="newname" placeholder="name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'name'">
+                    <input type="button" id="nameChangeBtn" value="Update Name">
                     <h3 id=newpasstext>New Password:</h3>
                     <input type="button" value="Change Password" id="changePassBtn">
-                </div>
-                <div class="modal-footer modal-footer-btns">
-                    <input type="button" data-dismiss="modal" value="Close">
-                    <input type="button" id="nameChangeBtn" value="Change">
                 </div>
             </div>
             </div>

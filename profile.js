@@ -43,6 +43,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
+// When enter key is pressed
+$(document).keypress(function(event) {
+    if (event.which == '13') {
+        event.preventDefault();
+        var text = messageInput.value;
+    }
+});
+
+
 // Updating name value on profile page
 userRef.on('child_added', function(data) {
     var {id : userID, name : username, email} = data.val();
@@ -104,7 +113,7 @@ $('#nameChangeBtn').click(function() {
     var oldName = name;
 
     // Change name value in users
-    userRef.orderByChild("name").equalTo(name).once("value", function(snapshot) {
+    userRef.orderByChild('name').equalTo(name).once('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             childSnapshot.ref.update({ name: newName });
             name = newName;
@@ -112,11 +121,13 @@ $('#nameChangeBtn').click(function() {
     });
 
     // Change neame value in messages
-    msgRef.orderByChild("name").equalTo(oldName).once("value", function(snapshot) {
+    msgRef.orderByChild('name').equalTo(oldName).once('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             childSnapshot.ref.update({ name: newName });
         });
     });
+
+    location.reload('#');
 });
 
 

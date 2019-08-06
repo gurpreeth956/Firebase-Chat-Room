@@ -30,6 +30,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
+// When enter key is pressed
+$(document).keypress(function(event) {
+    if (event.which == '13') {
+        event.preventDefault();
+        var text = messageInput.value;
+
+        if (text.trim()) {
+            sendMessage();
+        } else {
+            alert("Nothing was entered");
+        }
+    }
+});
+
+
 // Enabling send button
 $(document).ready(function() {
     $('#msgBtn').attr('disabled', 'disabled');
@@ -63,8 +78,14 @@ $('#profileBtn').click(function() {
 });
 
 
-// Sending message button function
+// When send message button clicked
 $('#msgBtn').click(function() {
+    sendMessage();
+});
+
+
+// Sending message button function
+function sendMessage() {
     var text = messageInput.value;
     var name = 'anonymouschatuser';
 
@@ -91,7 +112,7 @@ $('#msgBtn').click(function() {
             }
         });
     });
-});
+}
 
 
 // Updating messages after one is sent

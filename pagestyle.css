@@ -89,6 +89,10 @@ h2.active {
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
 }
+
+.modal-body {
+    text-align: center;
+}
   
   
 /* FORM TYPOGRAPHY*/
@@ -107,7 +111,7 @@ input[type=button], input[type=submit], input[type=reset]  {
     box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 20px 20px;
+    margin: 5px 20px 10px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -285,6 +289,7 @@ input[type=text]:placeholder {
     width:60%;
 }
 
+
 .profile-userpic {
     margin: 20px 0px 20px 0px;
 }
@@ -302,4 +307,12 @@ input[type=text]:placeholder {
 #profilePic {
     max-width: 200px;
     max-height : 200px;
+}
+  
+#nameChange {
+    margin-bottom: 0px;
+}
+
+#nameChangeBtn {
+    margin-bottom: 20px;
 }
