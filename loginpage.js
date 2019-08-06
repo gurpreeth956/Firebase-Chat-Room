@@ -11,6 +11,7 @@
 
 // Database Variables
 var db = firebase.database();
+var userRef = db.ref('/msgs');
 var usersRef = db.ref('/users');
 var user = firebase.auth().currentUser;
 var storage = firebase.storage();
@@ -32,7 +33,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 $(document).keypress(function(event) {
     if (event.which == '13') {
         event.preventDefault();
-        var text = messageInput.value;
     }
 });
 
@@ -42,8 +42,10 @@ $(document).ready(function() {
     $('#loginBtn').attr('disabled', 'disabled');
     $('input[type="text"]').keyup(function() {
         if($('#email').val() != '' && $('#password').val() != '') {
+            // Login button enabled if texts not empty
             $('#loginBtn').removeAttr('disabled');
         } else {
+            // Login button enabled if texts are empty
             $('#loginBtn').attr('disabled', 'disabled');
         }
     });
@@ -55,8 +57,10 @@ $(document).ready(function() {
     $('#signupBtn').attr('disabled', 'disabled');
     $('input[type="text"]').keyup(function() {
         if($('#email').val() != '' && $('#password').val() != '' && $('#name').val() != '') {
+            // Signup button enabled if texts not empty
             $('#signupBtn').removeAttr('disabled');
         } else {
+            // Signup button enabled if texts are empty
             $('#signupBtn').attr('disabled', 'disabled');
         }
     });

@@ -42,8 +42,10 @@ $(document).keypress(function(event) {
         var text = messageInput.value;
 
         if (text.trim()) {
+            // There was a message
             sendMessage();
         } else {
+            // There was no message
             alert("Nothing was entered");
         }
     }
@@ -55,8 +57,10 @@ $(document).ready(function() {
     $('#msgBtn').attr('disabled', 'disabled');
     $('input[type="text"]').keyup(function() {
         if($('#msgInput').val() != '') {
+            // Send button enabled if text not empty
             $('#msgBtn').removeAttr('disabled');
         } else {
+            // Send button disabled if text is empty
             $('#msgBtn').attr('disabled', 'disabled');
         }
     });
@@ -75,6 +79,14 @@ $(document).ready(function() {
         pageStarted = false;
         $('#msgInput').removeAttr('disabled');
     }, 2000);
+
+    /* Note
+     *
+     * Messages may load in a wierd order if the profile pics of the user of the messages
+     * So, we give the page two seconds to load all the images and then load the messages
+     * The messages are stored and loaded by their count value
+     * 
+     */
 });
 
 
@@ -148,6 +160,11 @@ msgRef.on('child_added', function(data) {
 
 // Method for adding messages
 function addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count) {
+    // Message to send to HTML template:
+    var msg = '<div class="chat_img"> <img src="" alt="" style="width:50px; height:30px;"> </div>' +
+              '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>name:</b>text</p></div></div>';
+
+
     // For other users
     var msg = '<div class="chat_img"> <img src="' + imageFileLink + '" alt="" style="width:50px; height:30px;"> </div>' +
               '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>' + name + ':</b>' + text + '</p></div></div>';
@@ -159,7 +176,9 @@ function addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count) 
     }
 
     if (!pageStarted) {
+        // If page messages loaded then add directly to HTML
         messageScreen.innerHTML += msg;
     }
+    // Else put in messages array, which will run after 2 seconds
     allMessages[count] = msg;
 }

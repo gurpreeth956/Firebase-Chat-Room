@@ -32,6 +32,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         imageRef.getDownloadURL().then(function(url) {
             document.querySelector('img').src = url;
         }).catch(function(error) {
+            // User has no profile pic so use default
             imageRef = storage.ref('/images/no_user.png');
             imageRef.getDownloadURL().then(function(url) {
                 document.querySelector('img').src = url;
@@ -52,7 +53,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 $(document).keypress(function(event) {
     if (event.which == '13') {
         event.preventDefault();
-        var text = messageInput.value;
     }
 });
 
@@ -132,6 +132,7 @@ $('#nameChangeBtn').click(function() {
         });
     });
 
+    // Reloading current page
     location.reload('#');
 });
 
