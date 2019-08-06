@@ -1,13 +1,6 @@
 // JS file for loginpage.html page
 
 
-/* NOTES
-    
-    -FIX ORDER OF CHAT STUFF
-    -MAKE MULTIPLE CHATS POSSIBLE
-*/
-
-
 // Database Variables
 var db = firebase.database();
 var usersRef = db.ref('/users');
@@ -137,3 +130,196 @@ $('#passwordValBtn').click(function() {
         }
     });
 });
+
+
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
+
+// Testing to see if git counts comments
+//ff
+//ff
+//ff
+//ff
+//ff
