@@ -1,7 +1,12 @@
-// JS file for profile.html page
+/* JS file for profile.html page
+ *
+ * This page is for allowing the user to logout and change their user account info.
+ * The functions include viewing your name and profile picutre and changing them.
+ *  
+ */
 
 
-// HTML Variable
+// HTML Variables
 var messageName = document.getElementById('username');
 
 

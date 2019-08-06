@@ -1,4 +1,9 @@
-// JS file for chatroom.html page
+/* JS file for chatroom.html page
+ *
+ * This page is for the actual chatroom and includes all the functions for the chatroom.
+ * The functions include showing all the messages in the chatroom and adding messages
+ *  
+ */
 
 
 // HTML Variables
@@ -60,8 +65,9 @@ $(document).ready(function() {
 
 // For loading messages after images
 $(document).ready(function() {
+    // Code to be executed after 2 second
     setTimeout(function() {
-        // Code to be executed after 2 second
+        // All messages will be added to screen in order
         allMessages.forEach(function(item) {
             messageScreen.innerHTML += item;
         });
@@ -89,6 +95,7 @@ function sendMessage() {
     var text = messageInput.value;
     var name = 'anonymouschatuser';
 
+    // For adding the messages
     userRef.once("value", function(snapshot) {
         snapshot.forEach(function(child) {
             var {id : userID, email: userEmail, name : userName} = child.val();
@@ -123,6 +130,7 @@ msgRef.on('child_added', function(data) {
     var imageRef = storage.ref('/images/' + userID);
     var imageFileLink = "", msg = "";
 
+    // Adding message and image to screen
     imageRef.getDownloadURL().then(function(url) {
         imageFileLink = url;
         addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count);
@@ -140,8 +148,11 @@ msgRef.on('child_added', function(data) {
 
 // Method for adding messages
 function addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count) {
+    // For other users
     var msg = '<div class="chat_img"> <img src="' + imageFileLink + '" alt="" style="width:50px; height:30px;"> </div>' +
               '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>' + name + ':</b>' + text + '</p></div></div>';
+    
+    // For your messages
     if (uid == userID) {
         msg = '<div class="chat_img"> <img src="" alt=""> </div>' +
               '<div class="outgoing_msg"><div class="sent_msg"><p>' + text + '</p></div></div>';

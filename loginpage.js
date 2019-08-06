@@ -1,4 +1,12 @@
-// JS file for loginpage.html page
+/* JS file for loginpage.html page
+ *
+ * This page is for allowing the user to login to the chatroom or make an account.
+ * The functions include signing up and signing in and resetting password.
+ *  
+ */
+
+
+// HTML Variables
 
 
 // Database Variables
