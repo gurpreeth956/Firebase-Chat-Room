@@ -27,25 +27,28 @@ var uid, name, email;
 // Redirecting to chatroom page if logged in
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        // User is signed in.
+        // User is signed in
         uid = user.uid;
         email = user.email;
 
         // Getting user profile image
         imageRef = storage.ref('/images/' + uid);
         imageRef.getDownloadURL().then(function(url) {
+            // Get donwloaded URL for image
             document.querySelector('img').src = url;
         }).catch(function(error) {
             // User has no profile pic so use default
             imageRef = storage.ref('/images/no_user.png');
             imageRef.getDownloadURL().then(function(url) {
+                // Get donwloaded URL for image
                 document.querySelector('img').src = url;
             });
         });
     } else {
-        // No user is signed in.
+        // No user is signed in
         imageRef = storage.ref('/images/no_user.png');
         imageRef.getDownloadURL().then(function(url) {
+            // Get donwloaded URL for image
             document.querySelector('img').src = url;
         });
         location.replace('loginpage.html');
@@ -103,7 +106,8 @@ function previewFile() {
     }
 
     if (file) {
-        reader.readAsDataURL(file); // Reads the data as a URL
+        // Read the data as a URL
+        reader.readAsDataURL(file);
     } else {
         preview.src = "";
     }
@@ -123,6 +127,7 @@ $('#nameChangeBtn').click(function() {
 
     // Change name value in users
     userRef.orderByChild('name').equalTo(name).once('value', function(snapshot) {
+        // Get correct person data type to change
         snapshot.forEach(function(childSnapshot) {
             childSnapshot.ref.update({ name: newName });
             name = newName;
@@ -131,6 +136,7 @@ $('#nameChangeBtn').click(function() {
 
     // Change neame value in messages
     msgRef.orderByChild('name').equalTo(oldName).once('value', function(snapshot) {
+        // Get correct message data types to change
         snapshot.forEach(function(childSnapshot) {
             childSnapshot.ref.update({ name: newName });
         });

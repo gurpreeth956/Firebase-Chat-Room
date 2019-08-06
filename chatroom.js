@@ -30,9 +30,10 @@ var pageStarted = true;
 // Getting user uid if user loaded
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+        // User signed in
         uid = user.uid;
     } else {
-        // No user is signed in.
+        // No user is signed in
         location.replace('loginpage.html');
     }
 });
@@ -118,10 +119,12 @@ function sendMessage() {
             if (uid === userID) {
                 name = userName;
 
+                // Check if there is a message
                 if (!text.trim()) {
                     return alert('YOU HAVE TO TYPE IN A MESSAGE');
                 }
                 
+                // Create message data type
                 var msg = {
                     id: uid,
                     name: name,
@@ -129,6 +132,7 @@ function sendMessage() {
                     count: messageCount,
                 }
                 
+                // Push message to firebase
                 msgRef.push(msg);
                 messageInput.value = '';
             }
@@ -147,16 +151,20 @@ msgRef.on('child_added', function(data) {
 
     // Adding message and image to screen
     imageRef.getDownloadURL().then(function(url) {
+        // Get donwloaded URL for image
         imageFileLink = url;
         addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count);
     }).catch(function(error) {
+        // User has no profile pic so use default
         imageRef = storage.ref('/images/no_user.png');
         imageRef.getDownloadURL().then(function(url) {
+            // Get donwloaded URL for image
             imageFileLink = url;
             addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count);
         });
     });
 
+    // Increment count with each new message added
     messageCount++;
 });
 
@@ -166,7 +174,6 @@ function addMessageToScreen(msg, imageFileLink, uid, userID, name, text, count) 
     // Message to send to HTML template:
     var msg = '<div class="chat_img"> <img src="" alt="" style="width:50px; height:30px;"> </div>' +
               '<div class="incoming_msg"><div class="received_msg"><div class="received_withd_msg"><p><b>name:</b>text</p></div></div>';
-
 
     // For other users
     var msg = '<div class="chat_img"> <img src="' + imageFileLink + '" alt="" style="width:50px; height:30px;"> </div>' +

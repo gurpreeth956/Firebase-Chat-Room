@@ -25,10 +25,10 @@ var imageRef = storage.ref('/images');
 // Redirecting to chatroom page if logged in
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      // User is signed in.
+      // User is signed in
       location.replace('chatroom.html');
     } else {
-      // No user is signed in.
+      // No user is signed in
     }
 });
 
@@ -110,12 +110,14 @@ $('#signupBtn').click(function() {
             if (user) {
                 var uid = user.uid;
 
+                // Create user data type
                 var userData = {
                     id: uid,
                     name: name,
                     email: email
                 }
                 
+                // Push person to firebase
                 usersRef.push(userData);
             } else {
                 // No user is signed in.
