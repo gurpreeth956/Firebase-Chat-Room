@@ -2,7 +2,6 @@
 Online web chat room with user login using Firebase
 
 Some Features:
-
 -Users can create an account and login
 -Users can change their username and password
 -Users can add and change their profile pic
